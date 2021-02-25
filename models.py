@@ -67,8 +67,8 @@ class Player:
             self.score += 1
 
     def validation_attack(self):
-        if self.allowed_attacks not in [1,2,3]:
-            return False
+        return self.allowed_attacks in [1,2,3]
+
 
     @classmethod
     def validate_name(cls, name):
@@ -76,3 +76,6 @@ class Player:
             for i in file.readlines():
                 if name in i.split()[0]:
                     return False
+        return True
+
+

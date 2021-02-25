@@ -3,9 +3,10 @@ from exceptions import GameOver, EnemyDown
 from models import Player, Enemy
 import settings
 
-
 player_list = [0]
 """play_logic"""
+
+
 def play():
     while True:
         command = input("введите команду /start, /help, /exit, /show scores ")
@@ -41,7 +42,7 @@ def play():
                 except EnemyDown:
                     levels += 1
                     player.score += 5
-                    enemy = Enemy(1+levels, 1+levels)
+                    enemy = Enemy(1 + levels, 1 + levels)
                     player_list.append(player)
 
         if command == "/show scores":
@@ -51,8 +52,6 @@ def play():
             print(settings.setting)
         if command == "/exit":
             raise KeyboardInterrupt
-
-
 
 
 if __name__ == "__main__":
