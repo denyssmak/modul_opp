@@ -1,5 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
+from exceptions import GameOver
 from models import Player
 import settings
 
@@ -14,7 +15,14 @@ class PlayerTest(TestCase):
     def setUp(self):
         self.player = Player('name', settings.LIVES, 3, 1)
 
+    def test_players(self):
+        self.assertEqual(self.player.name, 'name')
+        self.assertEqual(self.player.lives, 3)
+        self.assertEqual(self.player.score, 0)
+        self.assertEqual(self.player.allowed_attacks, 1)
 
+    def test_decrease_lives_player(self):
+        self.assertRaises(GameOver)
 
     def test_fight_player(self):
         self.assertEqual(self.player.fight(1, 1), 0)
@@ -30,11 +38,3 @@ class PlayerTest(TestCase):
 
     def test_validate_name(self):
         self.assertTrue(self.player.validate_name(self.player.name))
-
-
-
-
-
-
-
-
